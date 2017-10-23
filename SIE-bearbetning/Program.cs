@@ -9,32 +9,21 @@ using System.Threading.Tasks;
 
 namespace SIE_bearbetning
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Hej, var god ange sökvägen till en SIE-fil");
             var theFile = Console.ReadLine();
             string pattern = @"#TRANS (\d{4}) {} (-?\d*.\d*)";
-
-            int counter = 0;
-            string content = File.ReadAllText(theFile);
-            var reader = new StringReader(content);
-            
-                while (true)
-                {
-                    var line = reader.ReadLine();
-                    if (line == null)
-                        break;
-                    if (Regex.Match(line, pattern).Success)
-                    {
-                        counter++;
-                    }
-                }
+                                   
+            StringReader reader;
+            var content = File.ReadAllText(theFile);
+            int counter = CountLines(content, pattern);
 
             var accounts = new Dictionary<string, decimal>();
             reader = new StringReader(content);
-            
+
             while (true)
             {
                 var line = reader.ReadLine();
@@ -66,6 +55,24 @@ namespace SIE_bearbetning
             Console.WriteLine("Summan av alla konton är:");
             Console.WriteLine(accounts.Sum(entry => entry.Value));
             Console.ReadLine();
+        }
+
+        public static int CountLines(string content, string pattern)
+        {
+            var counter = 0;
+            
+            var reader = new StringReader(content);
+            while (true)
+            {
+                var line = reader.ReadLine();
+                if (line == null)
+                    break;
+                if (Regex.Match(line, pattern).Success)
+                {
+                    counter++;
+                }
+            }
+            return counter;
         }
     }
 }
