@@ -20,16 +20,17 @@ namespace SIE_bearbetning
             StringReader reader;
             var content = File.ReadAllText(theFile);
             int counter = CountLines(content, pattern);
+            reader = new StringReader(content);
 
             var accounts = new Dictionary<string, decimal>();
-            reader = new StringReader(content);
+            
 
             while (true)
             {
                 var line = reader.ReadLine();
                 if (line == null)
                     break;
-                // string pattern = @"#TRANS (\d{4}) {} (-?\d*.\d*)";
+                
                 var match = Regex.Match(line, pattern);
                 if (match.Success)
                 {
@@ -48,10 +49,12 @@ namespace SIE_bearbetning
 
 
             Console.WriteLine($"Antal #TRANS som finns i filen är: {counter}");
+
             foreach (var entry in accounts.OrderBy(e => e.Key))
             {
                 Console.WriteLine($"{entry.Key} {entry.Value.ToString("F2")}");
             }
+            Console.WriteLine();
             Console.WriteLine("Summan av alla konton är:");
             Console.WriteLine(accounts.Sum(entry => entry.Value));
             Console.ReadLine();

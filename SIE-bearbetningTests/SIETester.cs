@@ -17,5 +17,6 @@ namespace SIE_bearbetningTests
             var lineCount = Program.CountLines(content, pattern);
             Assert.AreEqual(498, lineCount);
         }
+       
     }
 }
