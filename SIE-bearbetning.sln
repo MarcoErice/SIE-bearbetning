@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIE-bearbetning", "SIE-bear
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIE-bearbetningTests", "SIE-bearbetningTests\SIE-bearbetningTests.csproj", "{C193022F-0130-455D-A4D3-FB6F6707419B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewAttempt", "NewAttempt", "{24C68783-65E9-4D0C-9188-8609903BB146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bokföring", "Bokföring\Bokföring.csproj", "{4B072D42-6732-45C1-81CD-DAD11F0AEA18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{C193022F-0130-455D-A4D3-FB6F6707419B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C193022F-0130-455D-A4D3-FB6F6707419B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C193022F-0130-455D-A4D3-FB6F6707419B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B072D42-6732-45C1-81CD-DAD11F0AEA18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B072D42-6732-45C1-81CD-DAD11F0AEA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B072D42-6732-45C1-81CD-DAD11F0AEA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B072D42-6732-45C1-81CD-DAD11F0AEA18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4B072D42-6732-45C1-81CD-DAD11F0AEA18} = {24C68783-65E9-4D0C-9188-8609903BB146}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B492EF4-C639-4F15-962D-B470FE099D6D}

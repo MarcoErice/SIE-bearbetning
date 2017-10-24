@@ -17,6 +17,16 @@ namespace SIE_bearbetningTests
             var lineCount = Program.CountLines(content, pattern);
             Assert.AreEqual(498, lineCount);
         }
-       
+        [TestMethod]
+        public void CheckThatTRANS_SumEqualsZero()
+        {
+            //Arrange
+            var content = File.ReadAllText(@"C:\Users\marco\Desktop\SIE.txt");
+            string pattern = @"#TRANS (\d{4}) {} (-?\d*.\d*)";
+            //Act
+
+            //Assert
+        }
+
     }
 }
