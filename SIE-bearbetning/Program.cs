@@ -16,21 +16,38 @@ namespace SIE_bearbetning
             Console.WriteLine("Hej, var god ange sökvägen till en SIE-fil");
             var theFile = Console.ReadLine();
             string pattern = @"#TRANS (\d{4}) {} (-?\d*.\d*)";
-                                   
-            StringReader reader;
+
+            
             var content = File.ReadAllText(theFile);
             int counter = CountLines(content, pattern);
+            
+            var accounts = account(pattern,content);
+
+            Console.WriteLine($"Antal #TRANS som finns i filen är: {counter}");
+
+            foreach (var entry in accounts.OrderBy(e => e.Key))
+            {
+                Console.WriteLine($"{entry.Key} {entry.Value.ToString("F2")}");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Summan av alla konton är:");
+            Console.WriteLine(accounts.Sum(entry => entry.Value));
+            Console.ReadLine();
+        }
+
+        public static Dictionary<string, decimal> account(string pattern, string content)
+        {
+            StringReader reader;
             reader = new StringReader(content);
 
             var accounts = new Dictionary<string, decimal>();
-            
 
             while (true)
             {
                 var line = reader.ReadLine();
                 if (line == null)
                     break;
-                
+
                 var match = Regex.Match(line, pattern);
                 if (match.Success)
                 {
@@ -45,19 +62,7 @@ namespace SIE_bearbetning
                         accounts[accountId] = amount;
                 }
 
-            }
-
-
-            Console.WriteLine($"Antal #TRANS som finns i filen är: {counter}");
-
-            foreach (var entry in accounts.OrderBy(e => e.Key))
-            {
-                Console.WriteLine($"{entry.Key} {entry.Value.ToString("F2")}");
-            }
-            Console.WriteLine();
-            Console.WriteLine("Summan av alla konton är:");
-            Console.WriteLine(accounts.Sum(entry => entry.Value));
-            Console.ReadLine();
+            }return accounts;
         }
 
         public static int CountLines(string content, string pattern)

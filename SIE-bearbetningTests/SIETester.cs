@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using SIE_bearbetning;
+using System.Linq;
 
 namespace SIE_bearbetningTests
 {
@@ -24,8 +25,10 @@ namespace SIE_bearbetningTests
             var content = File.ReadAllText(@"C:\Users\marco\Desktop\SIE.txt");
             string pattern = @"#TRANS (\d{4}) {} (-?\d*.\d*)";
             //Act
-
+            var accounts = Program.account(pattern, content);
+            var accountsSum = accounts.Sum(entry => entry.Value);
             //Assert
+            Assert.AreEqual(0, accountsSum);
         }
 
     }
